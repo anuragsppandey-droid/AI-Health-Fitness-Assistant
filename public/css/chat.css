@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f8fc;
+    color:#333;
+}
+
+/* Navbar */
+
+nav{
+    background:#0b5ed7;
+    color:white;
+    padding:18px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:600;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:500;
+}
+
+/* Chat */
+
+.chat-container{
+    width:90%;
+    max-width:850px;
+    margin:40px auto;
+    background:white;
+    border-radius:15px;
+    box-shadow:0 8px 25px rgba(0,0,0,.1);
+    overflow:hidden;
+}
+
+.chat-header{
+    text-align:center;
+    padding:30px;
+    background:#eaf3ff;
+}
+
+.chat-header h1{
+    color:#0b5ed7;
+    margin-bottom:8px;
+}
+
+.chat-header p{
+    color:#666;
+}
+
+/* Messages */
+
+.chat-box{
+    height:450px;
+    padding:25px;
+    overflow-y:auto;
+}
+
+.message{
+    max-width:75%;
+    padding:15px 18px;
+    margin-bottom:15px;
+    border-radius:12px;
+    line-height:1.6;
+}
+
+.message p{
+    margin-top:5px;
+}
+
+.ai-message{
+    background:#eaf3ff;
+    margin-right:auto;
+}
+
+.user-message{
+    background:#0b5ed7;
+    color:white;
+    margin-left:auto;
+}
+
+/* Input */
+
+.chat-form{
+    display:flex;
+    gap:10px;
+    padding:20px;
+    border-top:1px solid #ddd;
+}
+
+.chat-form input{
+    flex:1;
+    padding:13px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+    outline:none;
+}
+
+.chat-form input:focus{
+    border-color:#0b5ed7;
+}
+
+.chat-form button{
+    padding:13px 25px;
+    border:none;
+    border-radius:8px;
+    background:#0b5ed7;
+    color:white;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.chat-form button:hover{
+    background:#084298;
+}
+
+/* Mobile */
+
+@media(max-width:600px){
+
+    nav{
+        flex-direction:column;
+        gap:10px;
+        text-align:center;
+    }
+
+    .chat-container{
+        width:95%;
+        margin:20px auto;
+    }
+
+    .chat-box{
+        height:400px;
+    }
+
+    .message{
+        max-width:90%;
+    }
+
+}

@@ -1,0 +1,260 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f8fc;
+    color: #333;
+}
+
+
+/* Navbar */
+
+nav {
+    width: 100%;
+    padding: 18px 7%;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: bold;
+    color: #0b5ed7;
+}
+
+nav a {
+    text-decoration: none;
+    color: #0b5ed7;
+    font-weight: bold;
+}
+
+
+/* Header */
+
+.emergency-header {
+    text-align: center;
+    padding: 45px 20px 30px;
+}
+
+.warning-icon {
+    font-size: 60px;
+    margin-bottom: 10px;
+}
+
+.emergency-header h1 {
+    color: #c62828;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.emergency-header p {
+    color: #666;
+    font-size: 17px;
+}
+
+
+/* Alert */
+
+.emergency-alert {
+    width: 86%;
+    margin: 15px auto 45px;
+    padding: 25px;
+    background: #fff3f3;
+    border-left: 6px solid #d32f2f;
+    border-radius: 8px;
+}
+
+.emergency-alert h2 {
+    color: #c62828;
+    margin-bottom: 10px;
+}
+
+.emergency-alert p {
+    color: #555;
+    line-height: 1.6;
+}
+
+
+/* Section */
+
+.emergency-section {
+    width: 86%;
+    margin: 0 auto 45px;
+}
+
+.emergency-section > h2 {
+    text-align: center;
+    color: #0b5ed7;
+    margin-bottom: 30px;
+    font-size: 30px;
+}
+
+
+/* Contact Cards */
+
+.contact-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.contact-card {
+    background: white;
+    padding: 30px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+}
+
+.contact-icon {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.contact-card h3 {
+    color: #0b5ed7;
+    margin-bottom: 10px;
+}
+
+.contact-card p {
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.contact-card a {
+    display: inline-block;
+    background: #c62828;
+    color: white;
+    padding: 10px 22px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-card a:hover {
+    background: #a61f1f;
+}
+
+
+/* Steps */
+
+.steps {
+    max-width: 850px;
+    margin: auto;
+}
+
+.step {
+    background: white;
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.step > span {
+    min-width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #0b5ed7;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.step h3 {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.step p {
+    color: #666;
+    line-height: 1.5;
+}
+
+
+/* Safety */
+
+.safety {
+    width: 86%;
+    margin: 0 auto 50px;
+    padding: 25px;
+    background: white;
+    border-left: 5px solid #c62828;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.safety h3 {
+    color: #c62828;
+    margin-bottom: 10px;
+}
+
+.safety p {
+    color: #666;
+    line-height: 1.6;
+}
+
+
+/* Footer */
+
+footer {
+    margin-top: 50px;
+    padding: 20px;
+    background: #0b5ed7;
+    color: white;
+    text-align: center;
+}
+
+
+/* Responsive */
+
+@media (max-width: 900px) {
+
+    .contact-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    nav {
+        padding: 15px 5%;
+    }
+
+    .logo {
+        font-size: 16px;
+    }
+
+    .emergency-header h1 {
+        font-size: 30px;
+    }
+
+    .emergency-section,
+    .emergency-alert,
+    .safety {
+        width: 90%;
+    }
+
+    .contact-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .step {
+        align-items: flex-start;
+    }
+
+}

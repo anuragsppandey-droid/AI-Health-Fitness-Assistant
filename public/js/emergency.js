@@ -1,0 +1,1 @@
+console.log("Emergency Info page loaded.");

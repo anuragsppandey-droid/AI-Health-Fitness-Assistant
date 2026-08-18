@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f8fc;
+    color: #333;
+}
+
+
+/* Navbar */
+
+nav {
+    background: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+    color: #0b5ed7;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+nav a {
+    text-decoration: none;
+    color: #0b5ed7;
+    font-weight: bold;
+}
+
+
+/* Main */
+
+main {
+    min-height: calc(100vh - 140px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+
+/* Profile Card */
+
+.profile-card {
+    width: 450px;
+    max-width: 100%;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.profile-icon {
+    font-size: 65px;
+    margin-bottom: 15px;
+}
+
+.profile-card h1 {
+    color: #0b5ed7;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #777;
+    margin-bottom: 30px;
+}
+
+
+/* Information */
+
+.profile-info {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.info-row {
+    padding: 18px 5px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.info-row span {
+    color: #777;
+}
+
+.info-row strong {
+    color: #333;
+    text-align: right;
+}
+
+
+/* Logout */
+
+#logoutBtn {
+    border: none;
+    background: #0b5ed7;
+    color: white;
+    padding: 11px 30px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+#logoutBtn:hover {
+    background: #084298;
+}
+
+
+/* Footer */
+
+footer {
+    background: #0b5ed7;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    nav {
+        padding: 15px 5%;
+    }
+
+    .logo {
+        font-size: 16px;
+    }
+
+    .profile-card {
+        padding: 30px 20px;
+    }
+
+    .info-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .info-row strong {
+        text-align: left;
+    }
+
+}

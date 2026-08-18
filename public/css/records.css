@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f8fc;
+    color:#333;
+}
+
+.container{
+    width:100%;
+    padding:50px 20px;
+    display:flex;
+    justify-content:center;
+}
+
+.record-box{
+    width:700px;
+    background:white;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 8px 25px rgba(0,0,0,.1);
+}
+
+.record-box h1{
+    text-align:center;
+    color:#0b5ed7;
+    margin-bottom:8px;
+}
+
+.record-box > p{
+    text-align:center;
+    color:#666;
+    margin-bottom:30px;
+}
+
+.input-group{
+    margin-bottom:20px;
+}
+
+.input-group label{
+    display:block;
+    margin-bottom:7px;
+    font-weight:500;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+    outline:none;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#0b5ed7;
+}
+
+textarea{
+    height:90px;
+    resize:vertical;
+}
+
+.row{
+    display:flex;
+    gap:20px;
+}
+
+.row .input-group{
+    width:50%;
+}
+
+button{
+    width:100%;
+    padding:13px;
+    border:none;
+    border-radius:8px;
+    background:#0b5ed7;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:#084298;
+}
+
+.back{
+    display:block;
+    text-align:center;
+    margin-top:20px;
+    color:#0b5ed7;
+    text-decoration:none;
+}
+
+@media(max-width:600px){
+
+    .record-box{
+        padding:25px;
+    }
+
+    .row{
+        flex-direction:column;
+        gap:0;
+    }
+
+    .row .input-group{
+        width:100%;
+    }
+
+}
+.saved-record{
+    margin-top:40px;
+    padding-top:30px;
+    border-top:1px solid #ddd;
+}
+
+.saved-record h2{
+    color:#0b5ed7;
+    margin-bottom:20px;
+}
+
+#recordDetails p{
+    margin:10px 0;
+    line-height:1.6;
+}
+
+.record-buttons{
+    display:flex;
+    gap:15px;
+    margin-top:20px;
+}
+
+.record-buttons button{
+    width:50%;
+}
+
+#deleteBtn{
+    background:#dc3545;
+}
+
+#deleteBtn:hover{
+    background:#b02a37;
+}

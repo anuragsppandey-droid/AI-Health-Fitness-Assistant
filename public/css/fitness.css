@@ -1,0 +1,255 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f8fc;
+    color: #333;
+}
+
+
+/* =========================
+   Navbar
+========================= */
+
+nav {
+    width: 100%;
+    padding: 18px 7%;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: bold;
+    color: #0b5ed7;
+}
+
+nav a {
+    text-decoration: none;
+    color: #0b5ed7;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #084298;
+}
+
+
+/* =========================
+   Header
+========================= */
+
+.fitness-header {
+    text-align: center;
+    padding: 55px 20px 30px;
+}
+
+.fitness-header h1 {
+    color: #0b5ed7;
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.fitness-header p {
+    color: #666;
+    font-size: 17px;
+}
+
+
+/* =========================
+   Daily Tip
+========================= */
+
+.daily-tip {
+    width: 80%;
+    max-width: 900px;
+    margin: 10px auto 50px;
+    background: white;
+    padding: 30px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+}
+
+.daily-tip h2 {
+    color: #0b5ed7;
+    margin-bottom: 15px;
+}
+
+.daily-tip p {
+    color: #555;
+    font-size: 17px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+#newTipBtn {
+    border: none;
+    background: #0b5ed7;
+    color: white;
+    padding: 11px 22px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#newTipBtn:hover {
+    background: #084298;
+}
+
+
+/* =========================
+   Fitness Section
+========================= */
+
+.fitness-section {
+    width: 86%;
+    margin: auto;
+}
+
+.fitness-section > h2 {
+    text-align: center;
+    color: #0b5ed7;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+
+/* =========================
+   Fitness Cards
+========================= */
+
+.fitness-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.fitness-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+    transition: 0.3s;
+}
+
+.fitness-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.fitness-card h3 {
+    color: #0b5ed7;
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.fitness-card p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.fitness-card ul {
+    padding-left: 20px;
+    color: #555;
+}
+
+.fitness-card li {
+    margin-bottom: 8px;
+}
+
+
+/* =========================
+   Safety
+========================= */
+
+.safety {
+    width: 86%;
+    margin: 50px auto;
+    padding: 25px;
+    background: #fff;
+    border-left: 5px solid #f0ad4e;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.safety h3 {
+    color: #c77c02;
+    margin-bottom: 10px;
+}
+
+.safety p {
+    color: #666;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   Footer
+========================= */
+
+footer {
+    margin-top: 60px;
+    padding: 20px;
+    background: #0b5ed7;
+    color: white;
+    text-align: center;
+}
+
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 900px) {
+
+    .fitness-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    nav {
+        padding: 15px 5%;
+    }
+
+    .logo {
+        font-size: 16px;
+    }
+
+    .fitness-header h1 {
+        font-size: 30px;
+    }
+
+    .daily-tip {
+        width: 90%;
+    }
+
+    .fitness-section {
+        width: 90%;
+    }
+
+    .fitness-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .safety {
+        width: 90%;
+    }
+
+}
