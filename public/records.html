@@ -2,166 +2,116 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Health Records</title>
-
     <link rel="stylesheet" href="css/records.css">
-
 </head>
 
 <body>
 
     <div class="container">
-
         <div class="record-box">
 
             <h1>📝 Health Records</h1>
 
-            <p>Enter your basic health information</p>
+            <div class="records-layout">
 
-            <form id="healthForm">
+                <!-- Health Record Form -->
+                <div class="form-section">
 
-                <div class="input-group">
+                    <h2>Enter Health Information</h2>
 
-                    <label>Age</label>
+                    <form id="healthForm">
 
-                    <input
-                        type="number"
-                        id="age"
-                        placeholder="Enter your age"
-                        required
-                    >
+                        <div class="input-group">
+                            <label>Age</label>
+                            <input type="number" id="age" placeholder="Enter your age" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Gender</label>
+                            <select id="gender" required>
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Blood Group</label>
+                            <select id="bloodGroup">
+                                <option value="">Select Blood Group</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="input-group">
+                                <label>Height (cm)</label>
+                                <input type="number" id="height" placeholder="170">
+                            </div>
+
+                            <div class="input-group">
+                                <label>Weight (kg)</label>
+                                <input type="number" id="weight" placeholder="65">
+                            </div>
+
+                        </div>
+
+                        <div class="input-group">
+                            <label>Medical Conditions</label>
+                            <textarea id="medicalConditions"
+                                placeholder="Enter medical conditions or write None"></textarea>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Allergies</label>
+                            <textarea id="allergies" placeholder="Enter allergies or write None"></textarea>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Current Medications</label>
+                            <textarea id="medications" placeholder="Enter current medications or write None"></textarea>
+                        </div>
+
+                        <button type="submit">Save Health Record</button>
+
+                    </form>
 
                 </div>
 
-                <div class="input-group">
+                <!-- Health Record History -->
+                <div class="saved-section">
 
-                    <label>Gender</label>
+                    <h2>📋 Health Record History</h2>
 
-                    <select id="gender" required>
-
-                        <option value="">Select Gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
-
-                    </select>
-
-                </div>
-
-                <div class="input-group">
-
-                    <label>Blood Group</label>
-
-                    <select id="bloodGroup">
-
-                        <option value="">Select Blood Group</option>
-                        <option value="A+">A+</option>
-                        <option value="A-">A-</option>
-                        <option value="B+">B+</option>
-                        <option value="B-">B-</option>
-                        <option value="AB+">AB+</option>
-                        <option value="AB-">AB-</option>
-                        <option value="O+">O+</option>
-                        <option value="O-">O-</option>
-
-                    </select>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="input-group">
-
-                        <label>Height (cm)</label>
-
-                        <input
-                            type="number"
-                            id="height"
-                            placeholder="170"
-                        >
-
+                    <div id="recordDetails">
+                        <p>Loading health records...</p>
                     </div>
 
-                    <div class="input-group">
-
-                        <label>Weight (kg)</label>
-
-                        <input
-                            type="number"
-                            id="weight"
-                            placeholder="65"
-                        >
-
-                    </div>
-
                 </div>
-
-                <div class="input-group">
-
-                    <label>Medical Conditions</label>
-
-                    <textarea
-                        id="medicalConditions"
-                        placeholder="Enter medical conditions or write None"
-                    ></textarea>
-
-                </div>
-
-                <div class="input-group">
-
-                    <label>Allergies</label>
-
-                    <textarea
-                        id="allergies"
-                        placeholder="Enter allergies or write None"
-                    ></textarea>
-
-                </div>
-
-                <div class="input-group">
-
-                    <label>Current Medications</label>
-
-                    <textarea
-                        id="medications"
-                        placeholder="Enter current medications or write None"
-                    ></textarea>
-
-                </div>
-
-                <button type="submit">
-                    Save Health Record
-                </button>
-
-            </form>
-            <div id="savedRecord" class="saved-record">
-
-                   <h2>Saved Health Record</h2>
-
-                  <div id="recordDetails"></div>
-
-                  <div class="record-buttons">
-
-                      <button id="editBtn">Edit</button>
-
-                     <button id="deleteBtn">Delete</button>
-
-                  </div>
 
             </div>
 
+            <!-- Back Button -->
             <a href="dashboard.html" class="back">
-                ← Back to Dashboard
+                <button class="back-button">⬅ Back to Dashboard</button>
             </a>
 
         </div>
-
     </div>
 
+    <!-- JavaScript -->
     <script src="js/records.js"></script>
 
 </body>

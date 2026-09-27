@@ -1,70 +1,39 @@
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+const { GoogleGenAI } = require("@google/genai");
 
 const HealthRecord = require("../models/HealthRecord");
 const BMI = require("../models/BMI");
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-
+const ai = new GoogleGenAI({
+    apiKey: process.env.GEMINI_API_KEY
+});
 
 const chatWithAI = async (req, res) => {
-
     try {
+        const { message } = req.body;
+        const userId = req.user.id;
 
-        const { message, userId } = req.body;
-
-        if (!message) {
-
+        if (!message || !message.trim()) {
             return res.status(400).json({
                 message: "Please enter a question."
             });
-
         }
 
+        // Get user's health record
+        console.log("Getting health record...");
 
-        // ==========================
-        // Get Health Record
-        // ==========================
+        const healthRecord = await HealthRecord.findOne({ userId });
 
-        let healthRecord = null;
+        console.log("Health record received");
 
-        if (userId) {
+        // Get user's latest BMI
+        console.log("Getting BMI...");
 
-            console.log("Getting health record...");
+        const bmiRecord = await BMI.findOne({ userId })
+            .sort({ createdAt: -1 });
 
-            healthRecord = await HealthRecord.findOne({
-                userId
-            });
+        console.log("BMI received");
 
-            console.log("Health record received");
-
-        }
-
-
-        // ==========================
-        // Get Latest BMI
-        // ==========================
-
-        let bmiRecord = null;
-
-        if (userId) {
-
-            console.log("Getting BMI...");
-
-            bmiRecord = await BMI.findOne({
-                userId
-            }).sort({
-                createdAt: -1
-            });
-
-            console.log("BMI received");
-
-        }
-
-
-        // ==========================
-        // Health Profile
-        // ==========================
-
+        // Health profile
         const profile = healthRecord
             ? `
 Age: ${healthRecord.age}
@@ -78,11 +47,7 @@ Medications: ${healthRecord.medications || "None"}
 `
             : "No health record available.";
 
-
-        // ==========================
-        // BMI Information
-        // ==========================
-
+        // BMI information
         const bmiInfo = bmiRecord
             ? `
 BMI: ${bmiRecord.bmi}
@@ -90,20 +55,7 @@ BMI Status: ${bmiRecord.status}
 `
             : "No BMI record available.";
 
-
-        // ==========================
-        // Gemini Model
-        // ==========================
-
-        const model = genAI.getGenerativeModel({
-            model: "gemini-3.6-flash"
-        });
-
-
-        // ==========================
-        // Prompt
-        // ==========================
-
+        // AI prompt
         const prompt = `
 You are an AI Health & Fitness Assistant.
 
@@ -144,79 +96,73 @@ professional.
 Answer the user's question clearly and simply.
 `;
 
-
-        // ==========================
-        // Start Streaming
-        // ==========================
-
         console.log("Sending request to Gemini...");
 
         const geminiStart = Date.now();
 
-        const result = await model.generateContentStream(prompt);
+        try {
+            console.log("Trying Gemini 3.6 Flash...");
 
-        console.log(
-            "Gemini stream started after:",
-            ((Date.now() - geminiStart) / 1000).toFixed(2),
-            "seconds"
-        );
+            const response = await ai.models.generateContent({
+                model: "gemini-3.6-flash",
+                contents: prompt
+            });
 
+            const text = response.text;
 
-        // Tell browser we are sending text
-        res.setHeader("Content-Type", "text/plain; charset=utf-8");
-        res.setHeader("Transfer-Encoding", "chunked");
-        res.setHeader("Cache-Control", "no-cache");
-        res.setHeader("Connection", "keep-alive");
+            console.log(
+                "Gemini response received in:",
+                ((Date.now() - geminiStart) / 1000).toFixed(2),
+                "seconds"
+            );
 
-        res.flushHeaders();
-
-
-        // ==========================
-        // Send Chunks
-        // ==========================
-
-        for await (const chunk of result.stream) {
-
-            const text = chunk.text();
-
-            if (text) {
-
-                res.write(text);
-
+            if (!text) {
+                return res.status(503).json({
+                    message: "AI could not generate a response."
+                });
             }
 
+            res.setHeader(
+                "Content-Type",
+                "text/plain; charset=utf-8"
+            );
+
+            res.setHeader(
+                "Cache-Control",
+                "no-cache"
+            );
+
+            return res.send(text);
+
+        } catch (geminiError) {
+
+            console.error(
+                "Gemini Error:",
+                geminiError.message
+            );
+
+            return res.status(503).json({
+                message:
+                    "AI service is temporarily unavailable. Please try again in a few seconds."
+            });
         }
-
-
-        console.log(
-            "Gemini finished in:",
-            ((Date.now() - geminiStart) / 1000).toFixed(2),
-            "seconds"
-        );
-
-
-        res.end();
-
 
     } catch (error) {
 
-        console.error("Gemini Error:", error);
+        console.error(
+            "Chat Controller Error:",
+            error
+        );
 
-        // If headers haven't been sent yet
         if (!res.headersSent) {
-
             return res.status(500).json({
                 message: "Unable to get response from AI."
             });
-
         }
 
         res.end();
-
     }
-
 };
-
 
 module.exports = {
     chatWithAI

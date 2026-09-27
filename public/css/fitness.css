@@ -1,3 +1,5 @@
+/* Reset */
+
 * {
     margin: 0;
     padding: 0;
@@ -11,9 +13,7 @@ body {
 }
 
 
-/* =========================
-   Navbar
-========================= */
+/* Navbar */
 
 nav {
     width: 100%;
@@ -42,9 +42,7 @@ nav a:hover {
 }
 
 
-/* =========================
-   Header
-========================= */
+/* Header */
 
 .fitness-header {
     text-align: center;
@@ -63,16 +61,14 @@ nav a:hover {
 }
 
 
-/* =========================
-   Daily Tip
-========================= */
+/* Daily Tip */
 
 .daily-tip {
     width: 80%;
     max-width: 900px;
     margin: 10px auto 50px;
-    background: white;
     padding: 30px;
+    background: white;
     text-align: center;
     border-radius: 12px;
     box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
@@ -105,16 +101,14 @@ nav a:hover {
 }
 
 
-/* =========================
-   Fitness Section
-========================= */
+/* Fitness Section */
 
 .fitness-section {
     width: 86%;
     margin: auto;
 }
 
-.fitness-section > h2 {
+.fitness-section>h2 {
     text-align: center;
     color: #0b5ed7;
     font-size: 30px;
@@ -122,9 +116,7 @@ nav a:hover {
 }
 
 
-/* =========================
-   Fitness Cards
-========================= */
+/* Cards */
 
 .fitness-cards {
     display: grid;
@@ -172,9 +164,7 @@ nav a:hover {
 }
 
 
-/* =========================
-   Safety
-========================= */
+/* Safety */
 
 .safety {
     width: 86%;
@@ -197,9 +187,7 @@ nav a:hover {
 }
 
 
-/* =========================
-   Footer
-========================= */
+/* Footer */
 
 footer {
     margin-top: 60px;
@@ -210,20 +198,15 @@ footer {
 }
 
 
-/* =========================
-   Responsive
-========================= */
+/* Responsive */
 
 @media (max-width: 900px) {
-
     .fitness-cards {
         grid-template-columns: repeat(2, 1fr);
     }
-
 }
 
 @media (max-width: 600px) {
-
     nav {
         padding: 15px 5%;
     }
@@ -236,20 +219,13 @@ footer {
         font-size: 30px;
     }
 
-    .daily-tip {
-        width: 90%;
-    }
-
-    .fitness-section {
+    .daily-tip,
+    .fitness-section,
+    .safety {
         width: 90%;
     }
 
     .fitness-cards {
         grid-template-columns: 1fr;
     }
-
-    .safety {
-        width: 90%;
-    }
-
 }

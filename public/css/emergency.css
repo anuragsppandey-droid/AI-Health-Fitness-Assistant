@@ -1,3 +1,5 @@
+/*Reset */
+
 * {
     margin: 0;
     padding: 0;
@@ -11,7 +13,7 @@ body {
 }
 
 
-/* Navbar */
+/*Navbar */
 
 nav {
     width: 100%;
@@ -36,7 +38,7 @@ nav a {
 }
 
 
-/* Header */
+/*Emergency Header */
 
 .emergency-header {
     text-align: center;
@@ -76,20 +78,21 @@ nav a {
     margin-bottom: 10px;
 }
 
-.emergency-alert p {
-    color: #555;
+.emergency-alert p,
+.safety p {
+    color: #666;
     line-height: 1.6;
 }
 
 
-/* Section */
+/*  Emergency Section */
 
 .emergency-section {
     width: 86%;
     margin: 0 auto 45px;
 }
 
-.emergency-section > h2 {
+.emergency-section>h2 {
     text-align: center;
     color: #0b5ed7;
     margin-bottom: 30px;
@@ -131,9 +134,9 @@ nav a {
 
 .contact-card a {
     display: inline-block;
+    padding: 10px 22px;
     background: #c62828;
     color: white;
-    padding: 10px 22px;
     border-radius: 6px;
     text-decoration: none;
     font-weight: bold;
@@ -144,7 +147,7 @@ nav a {
 }
 
 
-/* Steps */
+/* Emergency Steps */
 
 .steps {
     max-width: 850px;
@@ -162,7 +165,7 @@ nav a {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
 }
 
-.step > span {
+.step>span {
     min-width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -176,7 +179,6 @@ nav a {
 
 .step h3 {
     margin-bottom: 5px;
-    color: #333;
 }
 
 .step p {
@@ -202,11 +204,6 @@ nav a {
     margin-bottom: 10px;
 }
 
-.safety p {
-    color: #666;
-    line-height: 1.6;
-}
-
 
 /* Footer */
 
@@ -222,15 +219,12 @@ footer {
 /* Responsive */
 
 @media (max-width: 900px) {
-
     .contact-cards {
         grid-template-columns: repeat(2, 1fr);
     }
-
 }
 
 @media (max-width: 600px) {
-
     nav {
         padding: 15px 5%;
     }
@@ -256,5 +250,4 @@ footer {
     .step {
         align-items: flex-start;
     }
-
 }

@@ -1,3 +1,4 @@
+/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -10,19 +11,14 @@ body {
     color: #333;
 }
 
-
-/* =========================
-   Navbar
-========================= */
-
+/* Navigation */
 nav {
-    width: 100%;
     padding: 18px 7%;
-    background: white;
+    background: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, .08);
 }
 
 .logo {
@@ -32,9 +28,9 @@ nav {
 }
 
 #logoutBtn {
-    border: none;
+    border: 0;
     background: #0b5ed7;
-    color: white;
+    color: #fff;
     padding: 10px 22px;
     border-radius: 6px;
     cursor: pointer;
@@ -45,11 +41,7 @@ nav {
     background: #084298;
 }
 
-
-/* =========================
-   Welcome
-========================= */
-
+/* Welcome */
 .welcome {
     text-align: center;
     padding: 55px 20px 35px;
@@ -66,77 +58,128 @@ nav {
     font-size: 17px;
 }
 
-
-/* =========================
-   Summary
-========================= */
+/* Summary */
+.summary,
+.dashboard-section,
+.health-summary {
+    width: 86%;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .summary {
-    width: 86%;
-    margin: 0 auto 50px;
     display: flex;
     justify-content: center;
     gap: 25px;
     flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+.summary-card,
+.card {
+    background: #fff;
+    text-decoration: none;
+    color: #333;
+    border-radius: 12px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, .08);
+    transition: .3s;
+}
+
+.summary-card:hover,
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .12);
 }
 
 .summary-card {
-    background: white;
     width: 300px;
     padding: 25px;
-    border-radius: 12px;
     text-align: center;
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
-
-    /* Make card clickable */
-    text-decoration: none;
-    color: #333;
-    cursor: pointer;
-
-    transition: 0.3s;
 }
 
-.summary-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+.summary-card h3,
+.card h3,
+.dashboard-section>h2,
+.health-summary h2 {
+    color: #0b5ed7;
 }
 
 .summary-card h3 {
-    color: #0b5ed7;
     margin-bottom: 12px;
 }
 
 .summary-card h2 {
-    font-size: 30px;
     color: #20a879;
+    font-size: 30px;
     margin-bottom: 8px;
 }
 
-.summary-card p {
-    color: #777;
+.summary-card p,
+.card p {
+    color: #666;
 }
 
-
-/* =========================
-   Quick Access
-========================= */
-
-.dashboard-section {
-    width: 86%;
-    margin: auto;
+/* Latest Health Information */
+.health-summary {
+    margin-bottom: 55px;
+    padding: 30px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, .08);
 }
 
-.dashboard-section > h2 {
+.health-summary h2 {
     text-align: center;
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+.health-info {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+}
+
+.health-info div {
+    padding: 20px 15px;
+    text-align: center;
+    background: #f4f8fc;
+    border: 1px solid #e1e7f0;
+    border-radius: 10px;
+}
+
+.health-info span {
+    display: block;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.health-info strong {
+    display: block;
     color: #0b5ed7;
+    font-size: 18px;
+}
+
+.health-link {
+    display: block;
+    width: fit-content;
+    margin: 25px auto 0;
+    color: #20a879;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.health-link:hover {
+    text-decoration: underline;
+}
+
+/* Quick Access */
+.dashboard-section>h2 {
+    text-align: center;
     font-size: 32px;
     margin-bottom: 35px;
 }
-
-
-/* =========================
-   Cards
-========================= */
 
 .cards {
     display: grid;
@@ -145,19 +188,8 @@ nav {
 }
 
 .card {
-    background: white;
     padding: 30px;
-    border-radius: 12px;
-    text-decoration: none;
-    color: #333;
     text-align: center;
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
 
 .card-icon {
@@ -166,13 +198,11 @@ nav {
 }
 
 .card h3 {
-    color: #0b5ed7;
-    margin-bottom: 10px;
     font-size: 20px;
+    margin-bottom: 10px;
 }
 
 .card p {
-    color: #666;
     line-height: 1.6;
     margin-bottom: 18px;
 }
@@ -182,34 +212,28 @@ nav {
     font-weight: bold;
 }
 
-
-/* =========================
-   Footer
-========================= */
-
+/* Footer */
 footer {
     margin-top: 70px;
     padding: 20px;
     background: #0b5ed7;
-    color: white;
+    color: #fff;
     text-align: center;
 }
 
-
-/* =========================
-   Responsive
-========================= */
-
+/* Tablet */
 @media (max-width: 900px) {
-
     .cards {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .health-info {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
+/* Mobile */
 @media (max-width: 600px) {
-
     nav {
         padding: 15px 5%;
     }
@@ -226,7 +250,9 @@ footer {
         font-size: 30px;
     }
 
-    .summary {
+    .summary,
+    .dashboard-section,
+    .health-summary {
         width: 90%;
     }
 
@@ -234,12 +260,16 @@ footer {
         width: 100%;
     }
 
-    .dashboard-section {
-        width: 90%;
+    .health-summary {
+        padding: 20px;
     }
 
+    .health-summary h2 {
+        font-size: 24px;
+    }
+
+    .health-info,
     .cards {
         grid-template-columns: 1fr;
     }
-
 }

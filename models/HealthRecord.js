@@ -1,4 +1,9 @@
+/* Import */
+
 const mongoose = require("mongoose");
+
+
+/* Health Record Schema */
 
 const healthRecordSchema = new mongoose.Schema({
 
@@ -10,40 +15,52 @@ const healthRecordSchema = new mongoose.Schema({
 
     age: {
         type: Number,
-        required: true
+        required: true,
+        min: [1, "Age must be at least 1"],
+        max: [120, "Age cannot be more than 120"]
     },
 
     gender: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
 
     bloodGroup: {
-        type: String
+        type: String,
+        trim: true
     },
 
     height: {
-        type: Number
+        type: Number,
+        min: [30, "Height must be at least 30 cm"],
+        max: [250, "Height cannot be more than 250 cm"]
     },
 
     weight: {
-        type: Number
+        type: Number,
+        min: [2, "Weight must be at least 2 kg"],
+        max: [300, "Weight cannot be more than 300 kg"]
     },
 
     medicalConditions: {
-        type: String
+        type: String,
+        trim: true
     },
 
     allergies: {
-        type: String
+        type: String,
+        trim: true
     },
 
     medications: {
-        type: String
+        type: String,
+        trim: true
     }
 
-}, {
-    timestamps: true
-});
+}, { timestamps: true });
+
+
+/* Export */
 
 module.exports = mongoose.model("HealthRecord", healthRecordSchema);

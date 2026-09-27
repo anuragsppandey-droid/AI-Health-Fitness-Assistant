@@ -2,48 +2,73 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>BMI Calculator</title>
-
     <link rel="stylesheet" href="css/bmi.css">
-
 </head>
 
 <body>
 
     <div class="container">
-
         <div class="box">
 
             <h1>⚖️ BMI Calculator</h1>
 
-            <input type="number" id="height" placeholder="Enter Height (cm)">
+            <div class="bmi-layout">
 
-            <input type="number" id="weight" placeholder="Enter Weight (kg)">
+                <!-- LEFT SIDE : BMI CALCULATOR -->
+                <div class="calculator-section">
 
-            <button id="calculateBtn">Calculate BMI</button>
+                    <h2>Calculate BMI</h2>
 
-            <div class="result">
+                    <input type="number" id="height" placeholder="Enter Height (cm)">
+                    <input type="number" id="weight" placeholder="Enter Weight (kg)">
 
-                <h2 id="bmiValue">BMI : --</h2>
+                    <button id="calculateBtn">Calculate BMI</button>
 
-                <h3 id="bmiStatus">Status : --</h3>
+                    <!-- Current BMI Result -->
+                    <div class="result">
+                        <h2 id="bmiValue">BMI : --</h2>
+                        <h3 id="bmiStatus">Status : --</h3>
+                    </div>
+
+                </div>
+
+
+                <!-- RIGHT SIDE : HISTORY + CHART -->
+                <div class="history-section">
+
+                    <h2>📊 BMI History</h2>
+
+                    <div id="bmiHistory">
+                        <p>Loading BMI history...</p>
+                    </div>
+
+                    <h2 class="chart-title">📈 BMI Progress</h2>
+
+                    <div class="chart-container">
+                        <canvas id="bmiChart"></canvas>
+                    </div>
+
+                </div>
 
             </div>
 
-            <br>
 
+            <!-- Back Button -->
             <a href="dashboard.html">
-                <button>⬅ Back to Dashboard</button>
+                <button class="back-button">⬅ Back to Dashboard</button>
             </a>
 
         </div>
-
     </div>
 
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- BMI JavaScript -->
     <script src="js/bmi.js"></script>
 
 </body>

@@ -1,93 +1,148 @@
+/* Setup */
+
 const healthForm = document.getElementById("healthForm");
-
 const user = JSON.parse(localStorage.getItem("user"));
+const token = localStorage.getItem("token");
+let editingRecordId = null;
 
-if (!user) {
 
+/* Check Login */
+
+if (!user || !token) {
     alert("Please login first.");
-
-    window.location.href = "login.html";
-
+    location.href = "login.html";
 }
 
 
-// Load existing record when page opens
-loadRecord();
+/* Load Records */
 
+loadRecords();
 
-async function loadRecord() {
+async function loadRecords() {
 
     try {
+        const response = await fetch("/api/health/record", {
+            headers: { Authorization: `Bearer ${token}` }
+        });
 
-        const response = await fetch(
-            `/api/health/record/${user.id}`
-        );
+        const data = await response.json();
+        const details = document.getElementById("recordDetails");
 
         if (!response.ok) {
-
-            return;
-
+            throw new Error(data.message || "Unable to load health records");
         }
 
-        const record = await response.json();
+        details.innerHTML = "";
 
-        displayRecord(record);
+        if (!data.length) {
+            details.innerHTML = "<p>No health records added yet.</p>";
+            return;
+        }
 
-        fillForm(record);
+        data.forEach(record => displayRecord(record));
 
     } catch (error) {
 
-        console.error(error);
+        console.error("Load Records Error:", error);
 
+        document.getElementById("recordDetails").textContent =
+            "Unable to load health records.";
     }
-
 }
 
 
-// Display record
+/* Display Record */
+
 function displayRecord(record) {
 
-    document.getElementById("recordDetails").innerHTML = `
+    const details = document.getElementById("recordDetails");
+    const item = document.createElement("div");
 
-        <p><strong>Age:</strong> ${record.age}</p>
+    item.className = "health-record-item";
 
-        <p><strong>Gender:</strong> ${record.gender}</p>
+    const date = new Date(record.createdAt)
+        .toLocaleDateString("en-IN");
 
-        <p><strong>Blood Group:</strong> ${record.bloodGroup || "Not provided"}</p>
+    const title = document.createElement("h3");
+    title.textContent = `📅 Record Date: ${date}`;
+    item.appendChild(title);
 
-        <p><strong>Height:</strong> ${record.height || "Not provided"} cm</p>
+    const fields = [
+        ["Age", record.age],
+        ["Gender", record.gender],
+        ["Blood Group", record.bloodGroup || "Not provided"],
+        ["Height", record.height ? `${record.height} cm` : "Not provided"],
+        ["Weight", record.weight ? `${record.weight} kg` : "Not provided"],
+        ["Medical Conditions", record.medicalConditions || "None"],
+        ["Allergies", record.allergies || "None"],
+        ["Medications", record.medications || "None"]
+    ];
 
-        <p><strong>Weight:</strong> ${record.weight || "Not provided"} kg</p>
+    fields.forEach(([label, value]) => {
 
-        <p><strong>Medical Conditions:</strong>
-        ${record.medicalConditions || "None"}</p>
+        const p = document.createElement("p");
+        const strong = document.createElement("strong");
 
-        <p><strong>Allergies:</strong>
-        ${record.allergies || "None"}</p>
+        strong.textContent = `${label}: `;
+        p.append(strong, document.createTextNode(value));
 
-        <p><strong>Medications:</strong>
-        ${record.medications || "None"}</p>
+        item.appendChild(p);
+    });
 
-    `;
+    const buttons = document.createElement("div");
+    buttons.className = "record-buttons";
 
+    const editBtn = document.createElement("button");
+    editBtn.textContent = "✏️ Edit";
+    editBtn.className = "edit-record-btn";
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "🗑️ Delete";
+    deleteBtn.className = "delete-record-btn";
+
+
+    /* Edit Record */
+
+    editBtn.addEventListener("click", () => {
+
+        editingRecordId = record._id;
+        fillForm(record);
+
+        const age = document.getElementById("age");
+
+        age.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+        age.focus();
+
+        healthForm.querySelector("button[type='submit']")
+            .textContent = "Update Health Record";
+    });
+
+
+    /* Delete Record */
+
+    deleteBtn.addEventListener("click", () => {
+        deleteRecord(record._id);
+    });
+
+    buttons.append(editBtn, deleteBtn);
+    item.appendChild(buttons);
+    details.appendChild(item);
 }
 
 
-// Fill form with existing data
+/* Fill Edit Form */
+
 function fillForm(record) {
 
-    document.getElementById("age").value = record.age;
-
-    document.getElementById("gender").value = record.gender;
-
-    document.getElementById("bloodGroup").value =
-        record.bloodGroup || "";
-
-    document.getElementById("height").value =
-        record.height || "";
-
-    document.getElementById("weight").value =
-        record.weight || "";
+    document.getElementById("age").value = record.age || "";
+    document.getElementById("gender").value = record.gender || "";
+    document.getElementById("bloodGroup").value = record.bloodGroup || "";
+    document.getElementById("height").value = record.height || "";
+    document.getElementById("weight").value = record.weight || "";
 
     document.getElementById("medicalConditions").value =
         record.medicalConditions || "";
@@ -97,161 +152,118 @@ function fillForm(record) {
 
     document.getElementById("medications").value =
         record.medications || "";
-
 }
 
 
-// Save / Update
-healthForm.addEventListener("submit", async (e) => {
+/* Save / Update Record */
+
+healthForm.addEventListener("submit", async e => {
 
     e.preventDefault();
 
     const healthData = {
-
-        userId: user.id,
-
         age: document.getElementById("age").value,
-
         gender: document.getElementById("gender").value,
-
-        bloodGroup:
-            document.getElementById("bloodGroup").value,
-
-        height:
-            document.getElementById("height").value,
-
-        weight:
-            document.getElementById("weight").value,
-
-        medicalConditions:
-            document.getElementById("medicalConditions").value,
-
-        allergies:
-            document.getElementById("allergies").value,
-
-        medications:
-            document.getElementById("medications").value
-
+        bloodGroup: document.getElementById("bloodGroup").value,
+        height: document.getElementById("height").value,
+        weight: document.getElementById("weight").value,
+        medicalConditions: document.getElementById("medicalConditions").value,
+        allergies: document.getElementById("allergies").value,
+        medications: document.getElementById("medications").value
     };
-
 
     try {
 
-        const response = await fetch(
-            `/api/health/update/${user.id}`,
-            {
+        let response;
+
+        if (editingRecordId) {
+
+            healthData.recordId = editingRecordId;
+
+            response = await fetch("/api/health/update", {
                 method: "PUT",
-
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
                 },
-
                 body: JSON.stringify(healthData)
-            }
-        );
-
-
-        const data = await response.json();
-
-
-        // If record doesn't exist, create it
-        if (response.status === 404) {
-
-            const createResponse = await fetch(
-                "/api/health/save",
-                {
-                    method: "POST",
-
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-
-                    body: JSON.stringify(healthData)
-                }
-            );
-
-            const createData = await createResponse.json();
-
-            alert(createData.message);
+            });
 
         } else {
 
-            alert(data.message);
-
+            response = await fetch("/api/health/save", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify(healthData)
+            });
         }
 
+        const data = await response.json();
 
-        loadRecord();
-
-    } catch (error) {
-
-        console.error(error);
-
-        alert("Something went wrong.");
-
-    }
-
-});
-// Edit button
-document.getElementById("editBtn").addEventListener(
-    "click",
-    () => {
-
-        document.getElementById("age").scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
-
-        document.getElementById("age").focus();
-
-    }
-);
-
-// Delete
-document.getElementById("deleteBtn").addEventListener(
-    "click",
-    async () => {
-
-        const confirmDelete = confirm(
-            "Are you sure you want to delete your health record?"
-        );
-
-        if (!confirmDelete) {
+        if (!response.ok) {
+            alert(data.message || "Unable to save health record.");
             return;
         }
 
+        alert(data.message || "Health record saved successfully.");
 
-        try {
+        editingRecordId = null;
+        healthForm.reset();
 
-            const response = await fetch(
-                `/api/health/delete/${user.id}`,
-                {
-                    method: "DELETE"
-                }
-            );
+        healthForm.querySelector("button[type='submit']")
+            .textContent = "Save Health Record";
+
+        loadRecords();
+
+    } catch (error) {
+
+        console.error("Health Record Error:", error);
+        alert("Something went wrong.");
+    }
+});
 
 
-            const data = await response.json();
+/* Delete Health Record */
 
-            alert(data.message);
+async function deleteRecord(recordId) {
 
-            if (response.ok) {
+    if (!confirm("Are you sure you want to delete this health record?")) {
+        return;
+    }
 
-                healthForm.reset();
+    try {
 
-                document.getElementById(
-                    "recordDetails"
-                ).innerHTML = "";
+        const response = await fetch(`/api/health/delete/${recordId}`, {
+            method: "DELETE",
+            headers: { Authorization: `Bearer ${token}` }
+        });
 
-            }
+        const data = await response.json();
 
-        } catch (error) {
-
-            console.error(error);
-
-            alert("Unable to delete record.");
-
+        if (!response.ok) {
+            alert(data.message || "Unable to delete record.");
+            return;
         }
 
+        alert(data.message || "Health record deleted successfully.");
+
+        if (editingRecordId === recordId) {
+
+            editingRecordId = null;
+            healthForm.reset();
+
+            healthForm.querySelector("button[type='submit']")
+                .textContent = "Save Health Record";
+        }
+
+        loadRecords();
+
+    } catch (error) {
+
+        console.error("Delete Record Error:", error);
+        alert("Unable to delete health record.");
     }
-);
+}

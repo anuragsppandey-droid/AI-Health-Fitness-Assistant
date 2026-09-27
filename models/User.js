@@ -1,4 +1,9 @@
+/* Import */
+
 const mongoose = require("mongoose");
+
+
+/* User Schema */
 
 const userSchema = new mongoose.Schema({
 
@@ -12,7 +17,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true,
-        lowercase: true
+        lowercase: true,
+        trim: true,
+        match: [/^\S+@\S+\.\S+$/, "Please enter a valid email"]
     },
 
     password: {
@@ -20,8 +27,9 @@ const userSchema = new mongoose.Schema({
         required: true
     }
 
-}, {
-    timestamps: true
-});
+}, { timestamps: true });
+
+
+/* Export */
 
 module.exports = mongoose.model("User", userSchema);

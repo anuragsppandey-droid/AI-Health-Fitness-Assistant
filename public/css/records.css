@@ -1,155 +1,305 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+/* Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-body{
-    background:#f4f8fc;
-    color:#333;
+
+/* Page */
+
+body {
+    background: linear-gradient(135deg, #0b5ed7, #20c997);
+    min-height: 100vh;
+    padding: 30px 15px;
 }
 
-.container{
-    width:100%;
-    padding:50px 20px;
-    display:flex;
-    justify-content:center;
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
-.record-box{
-    width:700px;
-    background:white;
-    padding:40px;
-    border-radius:15px;
-    box-shadow:0 8px 25px rgba(0,0,0,.1);
+
+/* Main Box */
+
+.record-box {
+    width: 1100px;
+    max-width: 100%;
+    padding: 35px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
 }
 
-.record-box h1{
-    text-align:center;
-    color:#0b5ed7;
-    margin-bottom:8px;
+.record-box>h1 {
+    color: #0b5ed7;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-.record-box > p{
-    text-align:center;
-    color:#666;
-    margin-bottom:30px;
+
+/* Layout */
+
+.records-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 30px;
+    align-items: start;
 }
 
-.input-group{
-    margin-bottom:20px;
+
+/* Sections */
+
+.form-section,
+.saved-section {
+    padding: 25px;
+    background: #f8faff;
+    border: 1px solid #e1e7f0;
+    border-radius: 12px;
 }
 
-.input-group label{
-    display:block;
-    margin-bottom:7px;
-    font-weight:500;
+.form-section h2,
+.saved-section h2 {
+    color: #0b5ed7;
+    margin-bottom: 20px;
+}
+
+
+/* Form */
+
+.input-group {
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 500;
 }
 
 input,
 select,
-textarea{
-    width:100%;
-    padding:12px;
-    border:1px solid #ccc;
-    border-radius:8px;
-    font-size:15px;
-    outline:none;
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    background: #fff;
 }
 
 input:focus,
 select:focus,
-textarea:focus{
-    border-color:#0b5ed7;
+textarea:focus {
+    border-color: #0b5ed7;
+    box-shadow: 0 0 5px rgba(11, 94, 215, .15);
 }
 
-textarea{
-    height:90px;
-    resize:vertical;
+textarea {
+    height: 80px;
+    resize: vertical;
 }
 
-.row{
-    display:flex;
-    gap:20px;
+
+/* Height & Weight */
+
+.row {
+    display: flex;
+    gap: 15px;
 }
 
-.row .input-group{
-    width:50%;
+.row .input-group {
+    width: 50%;
 }
 
-button{
-    width:100%;
-    padding:13px;
-    border:none;
-    border-radius:8px;
-    background:#0b5ed7;
-    color:white;
-    font-size:16px;
-    cursor:pointer;
-    transition:.3s;
+
+/* Buttons */
+
+button,
+form button {
+    width: 100%;
+    padding: 12px;
+    border: 0;
+    border-radius: 8px;
+    background: #0b5ed7;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .2s;
 }
 
-button:hover{
-    background:#084298;
+button {
+    margin-top: 15px;
 }
 
-.back{
-    display:block;
-    text-align:center;
-    margin-top:20px;
-    color:#0b5ed7;
-    text-decoration:none;
+form button {
+    margin-top: 5px;
 }
 
-@media(max-width:600px){
+button:hover {
+    background: #084298;
+    transform: translateY(-1px);
+}
 
-    .record-box{
-        padding:25px;
+.back-button {
+    margin-top: 30px;
+}
+
+
+/* Records */
+
+#recordDetails {
+    max-height: 550px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.health-record-item {
+    background: #fff;
+    border: 1px solid #e1e7f0;
+    border-left: 5px solid #20c997;
+    padding: 18px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .08);
+}
+
+.health-record-item h3 {
+    color: #0b5ed7;
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.health-record-item p {
+    margin: 7px 0;
+    line-height: 1.5;
+    color: #333;
+    font-size: 14px;
+}
+
+.health-record-item p strong {
+    color: #0b5ed7;
+}
+
+
+/* Record Buttons */
+
+.record-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.record-buttons button {
+    width: 50%;
+    margin-top: 0;
+    padding: 9px;
+    font-size: 14px;
+}
+
+.edit-record-btn {
+    background: #0b5ed7;
+}
+
+.delete-record-btn {
+    background: #dc3545;
+}
+
+.edit-record-btn:hover {
+    background: #084298;
+}
+
+.delete-record-btn:hover {
+    background: #b02a37;
+}
+
+
+/* Scrollbar */
+
+#recordDetails::-webkit-scrollbar {
+    width: 6px;
+}
+
+#recordDetails::-webkit-scrollbar-thumb {
+    background: #bbb;
+    border-radius: 10px;
+}
+
+
+/* Back */
+
+.back {
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    color: #0b5ed7;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.back:hover {
+    text-decoration: underline;
+}
+
+
+/* Responsive */
+
+@media (max-width: 850px) {
+    .records-layout {
+        grid-template-columns: 1fr;
     }
 
-    .row{
-        flex-direction:column;
-        gap:0;
+    .record-box {
+        width: 700px;
     }
 
-    .row .input-group{
-        width:100%;
+    #recordDetails {
+        max-height: 450px;
+    }
+}
+
+@media (max-width: 500px) {
+    body {
+        padding: 15px 10px;
     }
 
-}
-.saved-record{
-    margin-top:40px;
-    padding-top:30px;
-    border-top:1px solid #ddd;
-}
+    .record-box {
+        padding: 20px 15px;
+    }
 
-.saved-record h2{
-    color:#0b5ed7;
-    margin-bottom:20px;
-}
+    .record-box>h1 {
+        font-size: 24px;
+    }
 
-#recordDetails p{
-    margin:10px 0;
-    line-height:1.6;
-}
+    .form-section,
+    .saved-section {
+        padding: 20px;
+    }
 
-.record-buttons{
-    display:flex;
-    gap:15px;
-    margin-top:20px;
-}
+    .row {
+        flex-direction: column;
+        gap: 0;
+    }
 
-.record-buttons button{
-    width:50%;
-}
+    .row .input-group {
+        width: 100%;
+    }
 
-#deleteBtn{
-    background:#dc3545;
-}
+    .record-buttons {
+        flex-direction: column;
+    }
 
-#deleteBtn:hover{
-    background:#b02a37;
+    .record-buttons button {
+        width: 100%;
+    }
+
+    #recordDetails {
+        max-height: 400px;
+    }
 }

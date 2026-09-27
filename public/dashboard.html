@@ -2,271 +2,146 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Dashboard | AI Health & Fitness Assistant</title>
-
     <link rel="stylesheet" href="css/dashboard.css">
-
 </head>
 
 <body>
 
     <!-- Navbar -->
-
     <nav>
-
-        <div class="logo">
-            ❤️ AI Health & Fitness Assistant
-        </div>
-
-        <button id="logoutBtn">
-            Logout
-        </button>
-
+        <div class="logo">❤️ AI Health & Fitness Assistant</div>
+        <button id="logoutBtn">Logout</button>
     </nav>
 
-
-    <!-- Welcome Section -->
-
+    <!-- Welcome -->
     <section class="welcome">
-
-        <h1 id="welcomeUser">
-            Welcome
-        </h1>
-
-        <p>
-            Track your health, fitness and wellness in one place.
-        </p>
-
+        <h1 id="welcomeUser">Welcome</h1>
+        <p>Track your health, fitness and wellness in one place.</p>
     </section>
 
-
-    <!-- Health Summary -->
-
+    <!-- Summary -->
     <section class="summary">
 
-
-        <!-- BMI Summary -->
-
         <a href="bmi.html" class="summary-card">
-
             <h3>⚖️ Latest BMI</h3>
-
-            <h2 id="bmiValue">
-                --
-            </h2>
-
-            <p id="bmiStatus">
-                No BMI calculated
-            </p>
-
+            <h2 id="bmiValue">--</h2>
+            <p id="bmiStatus">No BMI calculated</p>
         </a>
-
-
-        <!-- Health Records Summary -->
 
         <a href="records.html" class="summary-card">
-
             <h3>📝 Health Records</h3>
-
-            <h2 id="recordStatus">
-                --
-            </h2>
-
-            <p>
-                Your health information
-            </p>
-
+            <h2 id="recordStatus">0</h2>
+            <p id="recordText">No records added</p>
         </a>
 
-
-        <!-- AI Health Coach Summary -->
-
         <a href="chat.html" class="summary-card">
-
             <h3>🤖 AI Health Coach</h3>
-
-            <h2>
-                Ready
-            </h2>
-
-            <p>
-                Personalized health assistance
-            </p>
-
+            <h2>Ready</h2>
+            <p>Personalized health assistance</p>
         </a>
 
     </section>
 
+    <!-- Health Info -->
+    <section class="health-summary">
+
+        <h2>📊 Latest Health Information</h2>
+
+        <div class="health-info">
+
+            <div>
+                <span>Age</span>
+                <strong id="healthAge">--</strong>
+            </div>
+
+            <div>
+                <span>Gender</span>
+                <strong id="healthGender">--</strong>
+            </div>
+
+            <div>
+                <span>Blood Group</span>
+                <strong id="healthBloodGroup">--</strong>
+            </div>
+
+            <div>
+                <span>Height</span>
+                <strong id="healthHeight">--</strong>
+            </div>
+
+            <div>
+                <span>Weight</span>
+                <strong id="healthWeight">--</strong>
+            </div>
+
+        </div>
+
+        <a href="records.html" class="health-link">
+            View Health Records →
+        </a>
+
+    </section>
 
     <!-- Quick Access -->
-
     <section class="dashboard-section">
 
-        <h2>
-            Quick Access
-        </h2>
-
+        <h2>Quick Access</h2>
 
         <div class="cards">
 
-
-            <!-- BMI -->
-
             <a href="bmi.html" class="card">
-
-                <div class="card-icon">
-                    ⚖️
-                </div>
-
-                <h3>
-                    BMI Calculator
-                </h3>
-
-                <p>
-                    Calculate and track your Body Mass Index.
-                </p>
-
-                <span>
-                    Open →
-                </span>
-
+                <div class="card-icon">⚖️</div>
+                <h3>BMI Calculator</h3>
+                <p>Calculate and track your Body Mass Index.</p>
+                <span>Open →</span>
             </a>
-
-
-            <!-- Health Records -->
 
             <a href="records.html" class="card">
-
-                <div class="card-icon">
-                    📝
-                </div>
-
-                <h3>
-                    Health Records
-                </h3>
-
-                <p>
-                    Store and manage your health information.
-                </p>
-
-                <span>
-                    Open →
-                </span>
-
+                <div class="card-icon">📝</div>
+                <h3>Health Records</h3>
+                <p>Store and manage your health information.</p>
+                <span>Open →</span>
             </a>
-
-
-            <!-- AI Chat -->
 
             <a href="chat.html" class="card">
-
-                <div class="card-icon">
-                    🤖
-                </div>
-
-                <h3>
-                    AI Health Chat
-                </h3>
-
-                <p>
-                    Ask your AI health and fitness assistant.
-                </p>
-
-                <span>
-                    Chat Now →
-                </span>
-
+                <div class="card-icon">🤖</div>
+                <h3>AI Health Chat</h3>
+                <p>Ask your AI health and fitness assistant.</p>
+                <span>Chat Now →</span>
             </a>
-
-
-            <!-- Profile -->
 
             <a href="profile.html" class="card">
-
-                <div class="card-icon">
-                    👤
-                </div>
-
-                <h3>
-                    My Profile
-                </h3>
-
-                <p>
-                    View and manage your account details.
-                </p>
-
-                <span>   
-                  View Profile →
-                </span>
-
+                <div class="card-icon">👤</div>
+                <h3>My Profile</h3>
+                <p>View and manage your account details.</p>
+                <span>View Profile →</span>
             </a>
-
-
-            <!-- Fitness Tips -->
 
             <a href="fitness.html" class="card">
-
-                <div class="card-icon">
-                    💪
-                </div>
-
-                <h3>
-                    Fitness Tips
-                </h3>
-
-                <p>
-                    Get useful exercise and fitness suggestions.
-                </p>
-
-                <span>
-                    View Tips →
-                </span>
-
+                <div class="card-icon">💪</div>
+                <h3>Fitness Tips</h3>
+                <p>Get useful exercise and fitness suggestions.</p>
+                <span>View Tips →</span>
             </a>
-
-
-            <!-- Emergency -->
 
             <a href="emergency.html" class="card">
-
-                <div class="card-icon">
-                    🚑
-                </div>
-
-                <h3>
-                    Emergency Info
-                </h3>
-
-                <p>
-                    Important emergency information and contacts.
-                </p>
-
-                <span>
-                    View Emergency Info →
-                </span>
-
+                <div class="card-icon">🚑</div>
+                <h3>Emergency Info</h3>
+                <p>Important emergency information and contacts.</p>
+                <span>View Emergency Info →</span>
             </a>
-
 
         </div>
 
     </section>
 
-
     <!-- Footer -->
+    <footer>© 2026 AI Health & Fitness Assistant</footer>
 
-    <footer>
-
-        © 2026 AI Health & Fitness Assistant
-
-    </footer>
-
-
+    <!-- JavaScript -->
     <script src="js/dashboard.js"></script>
 
 </body>

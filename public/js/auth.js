@@ -1,11 +1,10 @@
-// Register Form
+/* Register */
 
 const registerForm = document.getElementById("registerForm");
 
 if (registerForm) {
 
     registerForm.addEventListener("submit", async (e) => {
-
         e.preventDefault();
 
         const name = document.getElementById("name").value.trim();
@@ -21,19 +20,11 @@ if (registerForm) {
         try {
 
             const response = await fetch("/api/auth/register", {
-
                 method: "POST",
-
                 headers: {
                     "Content-Type": "application/json"
                 },
-
-                body: JSON.stringify({
-                    name,
-                    email,
-                    password
-                })
-
+                body: JSON.stringify({ name, email, password })
             });
 
             const data = await response.json();
@@ -45,24 +36,21 @@ if (registerForm) {
             }
 
         } catch (error) {
-
             console.error(error);
-
             alert("Something went wrong.");
-
         }
-
     });
 
 }
-// Login Form
+
+
+/* Login */
 
 const loginForm = document.getElementById("loginForm");
 
 if (loginForm) {
 
     loginForm.addEventListener("submit", async (e) => {
-
         e.preventDefault();
 
         const email = document.getElementById("loginEmail").value.trim();
@@ -71,18 +59,11 @@ if (loginForm) {
         try {
 
             const response = await fetch("/api/auth/login", {
-
                 method: "POST",
-
                 headers: {
                     "Content-Type": "application/json"
                 },
-
-                body: JSON.stringify({
-                    email,
-                    password
-                })
-
+                body: JSON.stringify({ email, password })
             });
 
             const data = await response.json();
@@ -91,22 +72,19 @@ if (loginForm) {
 
             if (response.ok) {
 
-                // Save user in browser
+                // Save JWT
+                localStorage.setItem("token", data.token);
+
+                // Save user
                 localStorage.setItem("user", JSON.stringify(data.user));
 
-                // Redirect
                 window.location.href = "dashboard.html";
-
             }
 
         } catch (error) {
-
             console.error(error);
-
             alert("Something went wrong.");
-
         }
-
     });
 
 }

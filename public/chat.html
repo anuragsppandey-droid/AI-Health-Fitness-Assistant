@@ -2,78 +2,53 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>AI Health Chat</title>
 
     <link rel="stylesheet" href="css/chat.css">
-
 </head>
 
 <body>
 
+    <!-- Navbar -->
     <nav>
-
-        <div class="logo">
-            ❤️ AI Health & Fitness Assistant
-        </div>
-
-        <a href="dashboard.html">
-            ← Dashboard
-        </a>
-
+        <div class="logo">❤️ AI Health & Fitness Assistant</div>
+        <a href="dashboard.html">← Dashboard</a>
     </nav>
 
-
+    <!-- Chat -->
     <main class="chat-container">
 
         <div class="chat-header">
-
             <h1>🤖 AI Health Coach</h1>
-
-            <p>
-                Ask questions about fitness, nutrition and general wellness.
-            </p>
-
+            <p>Ask questions about fitness, nutrition and general wellness.</p>
         </div>
-
 
         <div id="chatBox" class="chat-box">
 
+            <!-- AI Message -->
             <div class="message ai-message">
-
                 <strong>AI Health Coach</strong>
-
-                <p>
-                    Hello! 👋 How can I help you with your health and fitness today?
-                </p>
-
+                <p>Hello! 👋 How can I help you with your health and fitness today?</p>
             </div>
 
         </div>
 
-
+        <!-- Chat Form -->
         <form id="chatForm" class="chat-form">
 
-            <input
-                type="text"
-                id="message"
-                placeholder="Ask a health or fitness question..."
-                autocomplete="off"
-                required
-            >
+            <input type="text" id="message" placeholder="Ask a health or fitness question..." autocomplete="off"
+                required>
 
-            <button type="submit">
-                Send
-            </button>
+            <button type="submit">Send</button>
 
         </form>
 
     </main>
 
-
+    <!-- JavaScript -->
     <script src="js/chat.js"></script>
 
 </body>
