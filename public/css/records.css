@@ -9,7 +9,6 @@
     font-family: 'Poppins', sans-serif;
 }
 
-
 /* Page */
 
 body {
@@ -17,13 +16,11 @@ body {
     min-height: 100vh;
     padding: 30px 15px;
 }
-
 .container {
     width: 100%;
     display: flex;
     justify-content: center;
 }
-
 
 /* Main Box */
 
@@ -35,13 +32,11 @@ body {
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
 }
-
 .record-box>h1 {
     color: #0b5ed7;
     text-align: center;
     margin-bottom: 30px;
 }
-
 
 /* Layout */
 
@@ -51,7 +46,6 @@ body {
     gap: 30px;
     align-items: start;
 }
-
 
 /* Sections */
 
@@ -68,7 +62,6 @@ body {
     color: #0b5ed7;
     margin-bottom: 20px;
 }
-
 
 /* Form */
 
@@ -106,7 +99,6 @@ textarea {
     resize: vertical;
 }
 
-
 /* Height & Weight */
 
 .row {
@@ -117,7 +109,6 @@ textarea {
 .row .input-group {
     width: 50%;
 }
-
 
 /* Buttons */
 
@@ -150,7 +141,6 @@ button:hover {
 .back-button {
     margin-top: 30px;
 }
-
 
 /* Records */
 
@@ -187,7 +177,6 @@ button:hover {
     color: #0b5ed7;
 }
 
-
 /* Record Buttons */
 
 .record-buttons {
@@ -195,18 +184,15 @@ button:hover {
     gap: 12px;
     margin-top: 18px;
 }
-
 .record-buttons button {
     width: 50%;
     margin-top: 0;
     padding: 9px;
     font-size: 14px;
 }
-
 .edit-record-btn {
     background: #0b5ed7;
 }
-
 .delete-record-btn {
     background: #dc3545;
 }
@@ -214,11 +200,9 @@ button:hover {
 .edit-record-btn:hover {
     background: #084298;
 }
-
 .delete-record-btn:hover {
     background: #b02a37;
 }
-
 
 /* Scrollbar */
 
@@ -230,7 +214,6 @@ button:hover {
     background: #bbb;
     border-radius: 10px;
 }
-
 
 /* Back */
 
@@ -246,7 +229,6 @@ button:hover {
 .back:hover {
     text-decoration: underline;
 }
-
 
 /* Responsive */
 

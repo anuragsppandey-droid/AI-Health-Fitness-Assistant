@@ -1,4 +1,4 @@
-/*Reset */
+/* Reset */
 
 * {
     margin: 0;
@@ -13,32 +13,49 @@ body {
 }
 
 
-/*Navbar */
+/* Navbar */
 
 nav {
     width: 100%;
     padding: 18px 7%;
-    background: white;
+    background: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, .08);
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-size: 21px;
     font-weight: bold;
     color: #0b5ed7;
 }
 
-nav a {
-    text-decoration: none;
-    color: #0b5ed7;
+.logo img {
+    width: 55px;
+    height: 50px;
+    object-fit: contain;
+}
+
+nav button {
+    background: #0b5ed7;
+    color: #fff;
+    border: 0;
+    padding: 9px 16px;
+    border-radius: 6px;
     font-weight: bold;
+    cursor: pointer;
+}
+
+nav button:hover {
+    background: #084298;
 }
 
 
-/*Emergency Header */
+/* Emergency Header */
 
 .emergency-header {
     text-align: center;
@@ -85,7 +102,7 @@ nav a {
 }
 
 
-/*  Emergency Section */
+/* Emergency Section */
 
 .emergency-section {
     width: 86%;
@@ -109,11 +126,11 @@ nav a {
 }
 
 .contact-card {
-    background: white;
+    background: #fff;
     padding: 30px;
     text-align: center;
     border-radius: 12px;
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 5px 18px rgba(0, 0, 0, .07);
 }
 
 .contact-icon {
@@ -136,7 +153,7 @@ nav a {
     display: inline-block;
     padding: 10px 22px;
     background: #c62828;
-    color: white;
+    color: #fff;
     border-radius: 6px;
     text-decoration: none;
     font-weight: bold;
@@ -155,14 +172,14 @@ nav a {
 }
 
 .step {
-    background: white;
+    background: #fff;
     margin-bottom: 15px;
     padding: 20px;
     border-radius: 10px;
     display: flex;
     align-items: center;
     gap: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, .06);
 }
 
 .step>span {
@@ -170,7 +187,7 @@ nav a {
     height: 40px;
     border-radius: 50%;
     background: #0b5ed7;
-    color: white;
+    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -193,10 +210,10 @@ nav a {
     width: 86%;
     margin: 0 auto 50px;
     padding: 25px;
-    background: white;
+    background: #fff;
     border-left: 5px solid #c62828;
     border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, .06);
 }
 
 .safety h3 {
@@ -211,7 +228,7 @@ footer {
     margin-top: 50px;
     padding: 20px;
     background: #0b5ed7;
-    color: white;
+    color: #fff;
     text-align: center;
 }
 
@@ -225,12 +242,19 @@ footer {
 }
 
 @media (max-width: 600px) {
+
     nav {
         padding: 15px 5%;
     }
 
     .logo {
         font-size: 16px;
+        gap: 6px;
+    }
+
+    .logo img {
+        width: 45px;
+        height: 42px;
     }
 
     .emergency-header h1 {

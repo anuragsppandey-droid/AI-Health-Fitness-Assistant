@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* Reset */
+
 * {
     margin: 0;
     padding: 0;
@@ -13,28 +14,52 @@ body {
     color: #333;
 }
 
+
 /* Navbar */
+
 nav {
-    background: #0b5ed7;
-    color: #fff;
-    padding: 18px 8%;
+    background: #fff;
+    color: #0b5ed7;
+    padding: 12px 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, .08);
 }
 
 .logo {
-    font-size: 22px;
-    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 21px;
+    font-weight: bold;
+    color: #0b5ed7;
 }
 
-nav a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
+.logo img {
+    width: 55px;
+    height: 50px;
+    object-fit: contain;
 }
+
+nav button {
+    background: #0b5ed7;
+    color: #fff;
+    border: 0;
+    padding: 9px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+nav button:hover,
+.chat-form button:hover {
+    background: #084298;
+}
+
 
 /* Chat Container */
+
 .chat-container {
     width: 90%;
     max-width: 850px;
@@ -60,7 +85,9 @@ nav a {
     color: #666;
 }
 
+
 /* Messages */
+
 .chat-box {
     height: 450px;
     padding: 25px;
@@ -90,7 +117,9 @@ nav a {
     margin-left: auto;
 }
 
+
 /* Chat Input */
+
 .chat-form {
     display: flex;
     gap: 10px;
@@ -121,11 +150,9 @@ nav a {
     font-size: 15px;
 }
 
-.chat-form button:hover {
-    background: #084298;
-}
 
-/* AI Response Formatting */
+/* AI Response */
+
 .ai-response {
     line-height: 1.7;
     color: #333;
@@ -178,12 +205,26 @@ nav a {
     height: 5px;
 }
 
+
 /* Mobile */
+
 @media (max-width: 600px) {
+
     nav {
         flex-direction: column;
         gap: 10px;
         text-align: center;
+        padding: 15px 5%;
+    }
+
+    .logo {
+        font-size: 16px;
+        gap: 6px;
+    }
+
+    .logo img {
+        width: 45px;
+        height: 42px;
     }
 
     .chat-container {

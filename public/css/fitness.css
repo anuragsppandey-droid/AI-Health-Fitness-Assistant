@@ -26,21 +26,33 @@ nav {
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-size: 21px;
     font-weight: bold;
     color: #0b5ed7;
 }
 
-nav a {
-    text-decoration: none;
-    color: #0b5ed7;
+.logo img {
+    width: 55px;
+    height: 50px;
+    object-fit: contain;
+}
+
+nav button {
+    background: #0b5ed7;
+    color: white;
+    border: none;
+    padding: 9px 16px;
+    border-radius: 6px;
     font-weight: bold;
+    cursor: pointer;
 }
 
-nav a:hover {
-    color: #084298;
+nav button:hover {
+    background: #084298;
 }
-
 
 /* Header */
 
@@ -207,12 +219,19 @@ footer {
 }
 
 @media (max-width: 600px) {
+
     nav {
         padding: 15px 5%;
     }
 
     .logo {
         font-size: 16px;
+        gap: 6px;
+    }
+
+    .logo img {
+        width: 45px;
+        height: 42px;
     }
 
     .fitness-header h1 {

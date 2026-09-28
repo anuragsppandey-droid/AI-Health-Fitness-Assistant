@@ -25,17 +25,33 @@ nav {
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     color: #0b5ed7;
     font-size: 21px;
     font-weight: bold;
 }
 
-nav a {
-    color: #0b5ed7;
-    text-decoration: none;
-    font-weight: bold;
+.logo img {
+    width: 55px;
+    height: 50px;
+    object-fit: contain;
 }
 
+nav button {
+    background: #0b5ed7;
+    color: white;
+    border: none;
+    padding: 9px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+nav button:hover {
+    background: #084298;
+}
 
 /* Main */
 
@@ -117,6 +133,7 @@ main {
     background: #084298;
 }
 
+
 /* Footer */
 
 footer {
@@ -126,15 +143,23 @@ footer {
     text-align: center;
 }
 
+
 /* Mobile */
 
 @media (max-width: 600px) {
+
     nav {
         padding: 15px 5%;
     }
 
     .logo {
         font-size: 16px;
+        gap: 6px;
+    }
+
+    .logo img {
+        width: 45px;
+        height: 42px;
     }
 
     .profile-card {
