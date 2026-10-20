@@ -1,11 +1,6 @@
-const { GoogleGenAI } = require("@google/genai");
 
 const HealthRecord = require("../models/HealthRecord");
 const BMI = require("../models/BMI");
-
-const ai = new GoogleGenAI({
-    apiKey: process.env.GEMINI_API_KEY
-});
 
 const chatWithAI = async (req, res) => {
     try {
@@ -96,32 +91,76 @@ professional.
 Answer the user's question clearly and simply.
 `;
 
-        console.log("Sending request to Gemini...");
+        console.log("Sending request to OpenRouter...");
 
-        const geminiStart = Date.now();
+        const aiStart = Date.now();
 
         try {
-            console.log("Trying Gemini 3.6 Flash...");
+            const response = await fetch(
+                "https://openrouter.ai/api/v1/chat/completions",
+                {
+                    method: "POST",
 
-            const response = await ai.models.generateContent({
-                model: "gemini-3.6-flash",
-                contents: prompt
-            });
+                    headers: {
+                        "Authorization":
+                            `Bearer ${process.env.OPENROUTER_API_KEY}`,
+                        "Content-Type": "application/json"
+                    },
 
-            const text = response.text;
+                    body: JSON.stringify({
+                        // Free model router
+                        model: "openrouter/free",
+
+                        messages: [
+                            {
+                                role: "user",
+                                content: prompt
+                            }
+                        ]
+                    })
+                }
+            );
+
+            const data = await response.json();
+            console.log("Requested model:", "openrouter/free");
+            console.log("Actual model used:", data.model);
 
             console.log(
-                "Gemini response received in:",
-                ((Date.now() - geminiStart) / 1000).toFixed(2),
+                "OpenRouter response received in:",
+                ((Date.now() - aiStart) / 1000).toFixed(2),
                 "seconds"
             );
 
-            if (!text) {
+            // Check API error
+            if (!response.ok) {
+                console.error(
+                    "OpenRouter Error:",
+                    data
+                );
+
                 return res.status(503).json({
-                    message: "AI could not generate a response."
+                    message:
+                        "AI service is temporarily unavailable. Please try again in a few seconds."
                 });
             }
 
+            // Get AI response
+            const text =
+                data?.choices?.[0]?.message?.content;
+
+            if (!text) {
+                console.error(
+                    "OpenRouter returned no response:",
+                    data
+                );
+
+                return res.status(503).json({
+                    message:
+                        "AI could not generate a response."
+                });
+            }
+
+            // Send response as plain text
             res.setHeader(
                 "Content-Type",
                 "text/plain; charset=utf-8"
@@ -134,11 +173,11 @@ Answer the user's question clearly and simply.
 
             return res.send(text);
 
-        } catch (geminiError) {
+        } catch (aiError) {
 
             console.error(
-                "Gemini Error:",
-                geminiError.message
+                "OpenRouter Error:",
+                aiError.message
             );
 
             return res.status(503).json({
