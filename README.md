@@ -1,26 +1,15 @@
-# ❤️ AI Health & Fitness Assistant
-
+❤️ AI Health & Fitness Assistant
 An AI-powered web application designed to help users manage their basic health and fitness information in one place.
 
 The application provides tools for BMI calculation, health record management, AI-powered health assistance, fitness tips, user profiles, and emergency information.
+🌐 Live Demo
+Live Website: https://ai-health-fitness-assistant.onrender.com
+Note: The application is deployed for demonstration purposes. The free hosting service may take some time to wake up when the application has been inactive.
 
----
-
-## 🌐 Live Demo
-
-🔗 **Live Website:**  
-https://ai-health-fitness-assistant.onrender.com
-
-> Note: The application is deployed for demonstration purposes. The free hosting service may take some time to wake up when the application has been inactive.
-
----
-
-## 📌 Project Overview
-
+📌 Project Overview
 Managing health and fitness information can become difficult when different tools are used for different purposes.
 
-The **AI Health & Fitness Assistant** provides a single platform where users can:
-
+The AI Health & Fitness Assistant provides a single platform where users can:
 - Create an account and securely log in
 - Calculate and track BMI
 - Store and manage health records
@@ -29,34 +18,23 @@ The **AI Health & Fitness Assistant** provides a single platform where users can
 - Manage basic profile information
 - Access emergency information
 - View health information from a central dashboard
-
-The application combines a web interface, backend APIs, MongoDB database, and Google's Gemini API to provide these features.
-
----
-
-## ✨ Features
-
-### 🔐 User Authentication
-
+The application combines a web interface, backend APIs, a MongoDB database, and the OpenRouter API to provide these features.
+✨ Features
+🔐 User Authentication
 - User registration
 - User login
 - Password protection using hashing
 - Logout functionality
 - User session information using Local Storage
-
-### ⚖️ BMI Calculator
-
+⚖️ BMI Calculator
 - Calculate Body Mass Index
 - Display BMI value
 - Determine BMI category
 - Save BMI information
 - View BMI history
 - Display latest BMI on dashboard
-
-### 📝 Health Records
-
+📝 Health Records
 Users can store and manage health information such as:
-
 - Age
 - Gender
 - Blood group
@@ -65,111 +43,72 @@ Users can store and manage health information such as:
 - Medications
 - Emergency contact
 - Other health information
-
 Users can:
-
 - Create records
 - View records
 - Edit records
 - Delete records
-
-### 🤖 AI Health Coach
-
-The application integrates Google's Gemini API to provide AI-powered health and fitness assistance.
+🤖 AI Health Coach
+The application integrates the OpenRouter API to provide AI-powered health and fitness assistance using available AI models.
 
 The AI assistant can provide general information about:
-
-- Exercise
-- Fitness
+- Exercise and fitness
 - Nutrition
-- Healthy lifestyle
+- Healthy lifestyles
 - General wellness
+The AI assistant can also use available user health information, including health records and the latest BMI, to provide more relevant responses.
+⚠️ The AI assistant provides general informational guidance and is not a replacement for a qualified healthcare professional. It does not replace medical diagnosis or treatment.
 
-The AI assistant can also use available user health information to provide more relevant responses.
-
-> ⚠️ The AI assistant provides general informational guidance and is not a replacement for a qualified healthcare professional.
-
-### 👤 My Profile
-
-Users can view their basic account information including:
-
+👤 My Profile
+Users can view their basic account information, including:
 - Name
 - Email
 - Account status
-
-### 💪 Fitness Tips
-
+💪 Fitness Tips
 The fitness section provides guidance related to:
-
 - Cardio
 - Strength training
 - Flexibility
 - Nutrition
 - Sleep and recovery
 - Fitness consistency
-
 It also includes a random fitness tip generator.
-
-### 🚑 Emergency Information
-
+🚑 Emergency Information
 Provides general emergency guidance and important emergency information for users in India.
 
 The application includes:
 
-**112 — India's integrated emergency number**
+112 — India's integrated emergency number
+For serious emergencies, users should contact emergency services or seek immediate professional medical care.
 
-> For serious emergencies, users should contact emergency services or seek immediate professional medical care.
-
-### 📊 Dashboard
-
+📊 Dashboard
 The dashboard provides a central overview of:
-
 - Latest BMI
 - Health record availability
 - AI Health Coach
 - Quick access to application features
-
----
-
-## 🛠️ Technology Stack
-
-### Frontend
-
+🛠️ Technology Stack
+Frontend
 - HTML5
 - CSS3
 - JavaScript
-
-### Backend
-
+Backend
 - Node.js
 - Express.js
-
-### Database
-
+Database
 - MongoDB
 - Mongoose
-
-### AI
-
-- Google Gemini API
-- `@google/generative-ai`
-
-### Authentication & Security
-
+AI Integration
+- OpenRouter API
+- Free AI models available through OpenRouter, depending on model availability and rate limits
+Authentication & Security
 - bcryptjs
-- JSON Web Token
+- JSON Web Token (JWT)
 - dotenv
 - CORS
-
-### Deployment
-
+Deployment
 - Render
-
----
-
-## 📂 Project Structure
-
-```text
+📂 Project Structure
 AI-Health-Fitness-Assistant/
 │
 ├── config/
@@ -225,8 +164,39 @@ AI-Health-Fitness-Assistant/
 │       ├── fitness.js
 │       └── emergency.js
 │
-├── .env
 ├── .gitignore
 ├── package.json
 ├── package-lock.json
 └── server.js
+The .env file is intentionally excluded from the project structure because it should remain private and must not be committed to GitHub.
+
+⚙️ Setup and Installation
+1. Clone the repository
+git clone https://github.com/anuragsppandey-droid/AI-Health-Fitness-Assistant.git
+cd AI-Health-Fitness-Assistant
+2. Install dependencies
+npm install
+3. Configure environment variables
+Create a .env file in the project root and add the environment variables required by your application, for example:
+PORT=3000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+OPENROUTER_API_KEY=your_openrouter_api_key
+Use the exact MongoDB and JWT variable names expected by your existing code. Never commit .env or share your API key publicly.
+4. Start the application
+node server.js
+If you have Nodemon installed, you can use:
+nodemon server.js
+Open http://localhost:3000 in your browser.
+🔒 Security and Responsible Use
+- Keep API keys and database credentials in environment variables.
+- Do not commit .env to GitHub.
+- Use authentication to protect user-specific routes and health records.
+- Avoid sending unnecessary personal health information to third-party AI providers.
+- AI-generated information may be inaccurate and should not be treated as a medical diagnosis.
+👨‍💻 Author
+Anurag Pandey
+
+GitHub: https://github.com/anuragsppandey-droid
+📄 Disclaimer
+This project is intended for educational and demonstration purposes. It provides general health and fitness information and is not a substitute for professional medical advice, diagnosis, or treatment.
